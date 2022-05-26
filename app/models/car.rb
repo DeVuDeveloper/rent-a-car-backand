@@ -4,5 +4,5 @@ class Car < ApplicationRecord
 
   validates :name, :city, length: { maximum: 10 }
   validates :name, :fuel, :seats, :navigation, :car_type, :photo, :price_for_day, :city, presence: true
-
+  validates :price_for_day, numericality: { greater_than_or_equal_to: 0 }
 end
