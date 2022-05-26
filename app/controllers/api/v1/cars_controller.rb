@@ -1,8 +1,9 @@
-class Api::V1::RoomsController < ApplicationController
+class Api::V1::CarsController < ApplicationController
   before_action :set_car, only: %i[show destroy]
 
   def index
-    @cars = current_user.cars.all
+    @cars = Car.all
+    render json: @cars, status: 200
   end
 
   def create
@@ -30,6 +31,6 @@ class Api::V1::RoomsController < ApplicationController
   end
 
   def car_params
-    params.require(:car).permit(:name, :fuel, :seats, :navigation, :type, :photo, :price_for_day, :city, :user_id)
+    params.require(:car).permit(:name, :fuel, :seats, :navigation, :car_type, :photo, :price_for_day, :city, :user_id)
   end
 end

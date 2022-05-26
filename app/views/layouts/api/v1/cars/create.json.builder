@@ -4,7 +4,7 @@ json.car do
   json.fuel @car.fuel
   json.seats @car.seats
   json.navigation @car.navigation
-  json.type @car.type
+  json.car_type @car.car_type
   json.photo @car.photo
   json.price_for_day @car.price_for_day
   json.city @car.city
