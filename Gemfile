@@ -55,3 +55,14 @@ gem 'devise-jwt'
 gem 'fast_jsonapi'
 
 gem 'rubocop', '>= 1.0', '< 2.0'
+
+gem 'rswag'
+
+gem 'rswag-api'
+
+gem 'rswag-ui'
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'rswag-specs'
+end
