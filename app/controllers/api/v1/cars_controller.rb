@@ -6,6 +6,11 @@ class Api::V1::CarsController < ApplicationController
     render json: @cars, status: 200
   end
 
+  def show
+    @car = Car.find(params[:id])
+    render json: @car, status: 200
+  end
+
   def create
     @car = current_user.cars.new(car_params)
 
