@@ -4,10 +4,10 @@ RSpec.describe Reservation, type: :model do
   before(:each) do
     @user = User.new(id: 4, name: 'Ororogo', email: 'ororogo@gmail.com', password: 'secret123')
     @car = Car.create(user: @user, name: 'Ford', fuel: 'Petrol', seats: 4, navigation: 'GPS', car_type: 'middle',
-                      photo: 'photo.jpg', price_for_day: 50, city: 'Berlin')
+                      photo: 'photo.jpg', price_for_day: 50)
 
     @reservation = Reservation.create(pick_up_date: '2022-05-30', drop_off_date:
-                     '2022-06-05', car_id: @car.id, user_id: @user.id)
+                     '2022-06-05', pick_up_city: 'Berlin', return_city: 'Paris', car_id: @car.id, user_id: @user.id)
   end
 
   it 'if is valid' do
