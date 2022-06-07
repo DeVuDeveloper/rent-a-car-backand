@@ -1,48 +1,58 @@
 require 'swagger_helper'
 
-RSpec.describe 'devise/sessions', type: :request do
+RSpec.describe 'Registration', type: :request do
   path '/login' do
-    post('create sessions') do
-      tags 'User sessions'
+    post 'Log in' do
+      tags 'user session'
       consumes 'application/json'
-      parameter name: :login, in: :body, schema: {
+      parameter name: :user, in: :body, schema: {
         type: :object,
         properties: {
-          user: {
-            email: { type: :string },
-            password: { type: :string }
-          }
+
+          email: { type: :string },
+          password: { type: :string }
+
         },
         required: %w[email password]
       }
-      response '200', 'loged in' do
-        let(:login) do
-          { user: { email: 'some@gmail.com', password: '123456' } }
+      response '401', 'log in' do
+        let(:user) do
+          { user: { email: 'some@some.com', password: '1234567' } }
         end
         run_test!
       end
-
-      response '422', 'invalid request' do
-        let(:login) { { email: 'some@some.com', password: '2435' } }
+      response '401', 'invalid request' do
+        let(:user) do
+          { user: { email: 'some@some.com', password: '123' } }
+        end
         run_test!
       end
     end
   end
 
   path '/logout' do
-    delete('delete session') do
-      tags 'Sessions'
+    delete(' delete session') do
+      tags 'Logout'
+      consumes 'application/json'
       security [bearer_auth: []]
-      response(200, 'successful') do
-        response '201', 'Logged Out' do
-          let(:Authorization) { "Bearer #{::Base64.strict_encode64('ja@mail.com', password: '1111111')}" }
-          run_test!
+      parameter name: 'Authorization', in: :header, type: :string
+      response '201', 'Logout' do
+        let(:Authorization) do
+          'eyJhbGciOiJIUzI1NiJ9.
+          eyJqdGkiOiJmODkwODY3YS00NzlkLTRiNzMtOTY2OC05Y2ExNjBkNGQ3ZTciLCJmb28iOiJiYXIiLCJzdWIiOiIxNyIsInNjcCI6InVzZXIiL
+          CJhdWQiOm51bGwsImlhdCI6MTY1NDU3MDgxMCwiZXhwIjoxNjU0NzUwODEwfQ.CIS8B1dDTLXxqVHrqELrnJZ6FTN--Lup6a21xAXCm8o'
         end
 
-        response '401', 'authentication failed' do
-          let(:Authorization) { "Bearer #{::Base64.strict_encode64('bogus:bogus')}" }
-          run_test!
+        run_test!
+      end
+
+      response '401', 'authentication failed' do
+        let(:Authorization) do
+          'eyJhbGciOiJIUzI1NiJ9.
+          eyJqdGkiOiJmODkwODY3YS00NzlkLTRiNzMtOTY2OC05Y2ExNjBkNGQ3ZTciLCJmb28iOiJiYXIiLCJzdWIiOiIxNyIsInNjcCI6InVzZXIiL
+          CJhdWQiOm51bGwsImlhdCI6MTY1NDU3MDgxMCwiZXhwIjoxNjU0NzUwODEwfQ.CIS8B1dDTLXxqVHrqELrnJZ6FTN--Lup6a21xAXCm8o'
         end
+        run_test!
       end
     end
   end

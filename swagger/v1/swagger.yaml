@@ -3,9 +3,81 @@ openapi: 3.0.1
 info:
   title: API V1
   version: v1
-paths: {}
+components:
+  securitySchemes:
+    bearer_auth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+paths:
+  "/login":
+    post:
+      summary: Log in
+      tags:
+      - user session
+      parameters: []
+      responses:
+        '401':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+              - email
+              - password
+  "/logout":
+    delete:
+      summary: " delete session"
+      tags:
+      - Logout
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Logout
+        '401':
+          description: authentication failed
+  "/signup":
+    post:
+      summary: Sign up
+      tags:
+      - register user
+      parameters: []
+      responses:
+        '200':
+          description: sign up
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+              - name
+              - email
+              - password
 servers:
-- url: https://{defaultHost}
+- url: http://{defaultHost}
   variables:
     defaultHost:
       default: localhost:3001
