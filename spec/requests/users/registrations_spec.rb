@@ -18,7 +18,7 @@ RSpec.describe 'Registration', type: :request do
       }
       response '200', 'sign up' do
         let(:user) do
-          { user: { name: 'John', email: 'some@some.com', password: '1234567', password_confirmation: '1234567' } }
+          { user: { name: 'John', email: 'some1@some.com', password: '1234567', password_confirmation: '1234567' } }
         end
         run_test!
       end

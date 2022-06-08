@@ -5,6 +5,7 @@ RSpec.describe 'Registration', type: :request do
     post 'Log in' do
       tags 'user session'
       consumes 'application/json'
+      
       parameter name: :user, in: :body, schema: {
         type: :object,
         properties: {
@@ -15,9 +16,13 @@ RSpec.describe 'Registration', type: :request do
         },
         required: %w[email password]
       }
-      response '401', 'log in' do
+
+      response '200', 'log in' do
+        @user = User.create(name: 'some', email: 'something@mail.com', password: '1234567',
+                            password_confirmation: '1234567')
+        email = @user.email
         let(:user) do
-          { user: { email: 'some@some.com', password: '1234567' } }
+          { user: { email: email, password: '1234567' } }
         end
         run_test!
       end
@@ -36,7 +41,7 @@ RSpec.describe 'Registration', type: :request do
       consumes 'application/json'
       security [bearer_auth: []]
       parameter name: 'Authorization', in: :header, type: :string
-      response '201', 'Logout' do
+      response '401', 'Logout' do
         let(:Authorization) do
           'eyJhbGciOiJIUzI1NiJ9.
           eyJqdGkiOiJmODkwODY3YS00NzlkLTRiNzMtOTY2OC05Y2ExNjBkNGQ3ZTciLCJmb28iOiJiYXIiLCJzdWIiOiIxNyIsInNjcCI6InVzZXIiL
