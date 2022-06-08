@@ -61,3 +61,6 @@ gem 'rubocop', '>= 1.0', '< 2.0'
 gem 'rspec-rails'
 
 gem 'rswag'
+
+gem 'dotenv-rails', groups: [:development, :test]
+
