@@ -3,7 +3,7 @@ require 'swagger_helper'
 RSpec.describe 'api/v1/cars', type: :request do
   path '/api/v1/cars' do
     get('list cars') do
-      tags 'cars'
+      tags 'Cars'
       consumes 'application/json'
       security [bearer_auth: []]
       parameter name: 'Authorization', in: :header, type: :string

@@ -14,7 +14,7 @@ paths:
     get:
       summary: list cars
       tags:
-      - cars
+      - Cars
       security:
       - bearer_auth: []
       parameters:
