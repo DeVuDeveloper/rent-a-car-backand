@@ -14,8 +14,8 @@ Creating API end point using Ruby on Rails. The API includes user authentication
 ## Setup
 To run this project, install it locally using:
 - cd Desktop
-- git clone https://https://github.com/VuDej/rent-a-car-backand.git
-- cd rent-a-car-backand
+- git clone https://https://github.com/VuDej/rent-a-car-backend.git
+- cd rent-a-car-backend
 - bundle install
 - rails db:create
 - rails db:migrate

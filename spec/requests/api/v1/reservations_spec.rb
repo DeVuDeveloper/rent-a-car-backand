@@ -54,7 +54,8 @@ RSpec.describe 'api/v1/reservations', type: :request do
       response '401', 'Authorized' do
         let(:Authorization) do
           'eyJhbGciOiJIUzI1NiJ9.
-            eyJqdGkiOiJmODkwODY3YS00NzlkLTRiNzMtOTY2OC05Y2ExNjBkNGQ3ZTciLCJmb28iOiJiYXIiLCJzdWIiOiIxNyIsInNjcCI6InVzZXIiL
+            eyJqdGkiOiJmODkwODY3YS00Nz
+            lkLTRiNzMtOTY2OC05Y2ExNjBkNGQ3ZTciLCJmb28iOiJiYXIiLCJzdWIiOiIxNyIsInNjcCI6InVzZXIiL
             CJhdWQiOm51bGwsImlhdCI6MTY1NDU3MDgxMCwiZXhwIjoxNjU0NzUwODEwfQ.CIS8B1dDTLXxqVHrqELrnJZ6FTN--Lup6a21xAXCm8o'
         end
         run_test!
@@ -63,14 +64,15 @@ RSpec.describe 'api/v1/reservations', type: :request do
       response '401', 'authentication failed' do
         let(:Authorization) do
           'eyJhbGciOiJIUzI1NiJ9.
-            eyJqdGkiOiJmODkwODY3YS00NzlkLTRiNzMtOTY2OC05Y2ExNjBkNGQ3ZTciLCJmb28iOiJiYXIiLCJzdWIiOiIxNyIsInNjcCI6InVzZXIiL
+            eyJqdGkiOiJmODkwODY3YS00NzlkLTRiN
+            zMtOTY2OC05Y2ExNjBkNGQ3ZTciLCJmb28iOiJiYXIiLCJzdWIiOiIxNyIsInNjcCI6InVzZXIiL
             CJhdWQiOm51bGwsImlhdCI6MTY1NDU3MDgxMCwiZXhwIjoxNjU0NzUwODEwfQ.CIS8B1dDTLXxqVHrqELrnJZ6FTN--Lup6a21xAXCm8o'
         end
         run_test!
       end
     end
   end
-  
+
   path '/api/v1/reservations/{id}' do
     parameter name: 'id', in: :path, type: :string, description: 'id'
     delete('Delete Reservation') do

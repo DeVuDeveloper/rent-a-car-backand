@@ -5,7 +5,7 @@ RSpec.describe 'Registration', type: :request do
     post 'Log in' do
       tags 'user session'
       consumes 'application/json'
-      
+
       parameter name: :user, in: :body, schema: {
         type: :object,
         properties: {
