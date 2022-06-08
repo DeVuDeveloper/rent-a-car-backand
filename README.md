@@ -8,7 +8,7 @@
 Creating API end point using Ruby on Rails. The API includes user authentication and authorization with gem 'devise-jwt'. You can sign-up, login and logout. Also if user is authenticated can create if has role admin and delete cars. Otherwise user can see cars, car info and make reservation and list reservations. This back-and APi is connected and used in front end with React JS.
 
 ## Link to front-end 
-![Link to front-end repository](https://github.com/VuDej/rent-a-car-frontend.git)
+[Link to front-end repository](https://github.com/VuDej/rent-a-car-frontend.git)
 
 
 ## Setup
