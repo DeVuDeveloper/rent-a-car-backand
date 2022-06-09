@@ -38,7 +38,7 @@ To run this project, install it locally using:
 car_id: (exising car id from database)
 
 ## Live preview
-  ## Heroku [link]()
+  ## Heroku [link](https://rent-a-car-backend-dejan.herokuapp.com/index.html)
 
 
 ## Screenshots
