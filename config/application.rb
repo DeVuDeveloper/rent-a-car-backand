@@ -9,6 +9,7 @@ Bundler.require(*Rails.groups)
 module Booking
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
+    config.secret_key_base = ENV["SECRET_KEY_BASE"]
     config.load_defaults 7.0
     if Rails.env.test?
       RSpec.configure do |config|

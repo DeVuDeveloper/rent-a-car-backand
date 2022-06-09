@@ -9,6 +9,7 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
+  config.secret_key = '6562cd4ca0d10ec847b19fa17a8508eed370bea8a0a0a74aa9fcf461315fc8a93f116e3b0873fe4344beaee0e5a791a8b5f504f6e4c3035a0c1ec0e7fd65a351'
   config.jwt do |jwt|
     jwt.secret = Rails.application.credentials.fetch(:secret_key_base)
     jwt.dispatch_requests = [
